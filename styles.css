@@ -1,0 +1,252 @@
+* {
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0px auto;
+}
+
+:root {
+  --time: 0.2s;
+  --color-slider-element: #0080ff;
+  --color-white: #fff;
+  --color-black: #000;
+  --shadow-color: #999fff;
+}
+
+html {
+  background: var(--color-black);
+}
+
+body {
+  font-family: Forum;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1.2;
+
+}
+
+main {
+  max-width: 150em ;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+ 
+}
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  margin: 10em ;
+}
+
+.slides {
+  width: 100%;
+  height: 55em ;
+  overflow: hidden;
+  border-radius: 7%;
+  box-shadow: 0em  5em  5em  2em  var(--shadow-color);
+}
+.slides-container {
+  display: flex;
+  width: 400%;
+  height: 100%;
+}
+.slide {
+  width: 25%;
+  margin: 0px;
+  transition: var(--time);
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+}
+
+.slider input[type="radio"] {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* 
+.slider input[type="radio"]:checked + .section {
+  background: var(--color-slider-element);
+} */
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 10em ;
+}
+
+.sections {
+  display: flex;
+  justify-content: space-between;
+  width:  auto;
+  height: 100%;
+  align-items: center;
+}
+
+.section {
+  cursor: pointer;
+  position: relative;
+  height: 3em ;
+  width: 3em ;
+  transform: scale(0.6);
+  transition: var(--time);
+  border: 0.8em  solid var(--color-slider-element);
+  border-radius: 50%;
+  /* outline: 0.2em  solid var(--color-slider-element); */
+  background: var(--color-slider-element);
+}
+.section:before {
+  position: fixed;
+  content: "";
+  border: 2em  solid transparent;
+  width: 5em ;
+  height: 5em ;
+  left: -2em ;
+  top: -2em ;
+  /* border: 0.01em  dotted red; */
+}
+
+.section:hover {
+  background: var(--color-white);
+  border: 0.8em  solid var(--color-white);
+  /* outline: 0.2em  solid var(--color-slider-element); */
+}
+
+#sld-1:checked ~ .controls > .sections > label:nth-of-type(1),
+#sld-2:checked ~ .controls > .sections > label:nth-of-type(2),
+#sld-3:checked ~ .controls > .sections > label:nth-of-type(3),
+#sld-4:checked ~ .controls > .sections > label:nth-of-type(4) {
+  background: var(--shadow-color);
+  transform: scale(0.6);
+  cursor: default;
+}
+
+#sld-1:checked ~ .slides > .slides-container > .slide1 {
+  margin-left: 0%;
+  transition: var(--time);
+}
+#sld-2:checked ~ .slides > .slides-container > .slide2 {
+  margin-left: -25%;
+  transition: var(--time);
+}
+#sld-3:checked ~ .slides > .slides-container > .slide3 {
+  margin-left: -50%;
+  transition: var(--time);
+}
+#sld-4:checked ~ .slides > .slides-container > .slide3 {
+  margin-left: -75%;
+  transition: var(--time);
+}
+
+.text::after {
+  font-family: "Helvetica","Arialregular",  sans-serif;
+  font-size: 2em ;
+  padding: 15px;
+  font-weight: bold;
+}
+
+
+#sld-1:checked ~ .controls > .text::after {
+  content: "Все веселее ... ";
+  animation: anime1 var(--time);
+  color: rgb(5, 65, 170);
+}
+#sld-2:checked ~ .controls > .text::after {
+  content: "Задачка ... ";
+  animation: anime2 var(--time);
+  color: rgb(5, 65, 170);
+}
+#sld-3:checked ~ .controls > .text::after {
+  content: "Пойми ... ";
+  animation: anime3 var(--time);
+  color: rgb(5, 65, 170);
+}
+#sld-4:checked ~ .controls > .text::after {
+  content: "Печалька ...";
+  animation: anime4 var(--time);
+  color: rgb(5, 65, 170);
+}
+
+@media (max-width: 700px) {
+  body {
+    font-size: 5px;
+  }
+  
+  .controls {
+    height: 15em ;
+    flex-direction: column-reverse;
+    padding-bottom: 2em ;
+  }
+
+  .slides {
+    height: 55em ;
+  
+  }
+    .text::after {
+    font-size: 2.5em ;
+  }
+
+  .sections {
+    width:  20em;
+  }
+  
+
+  .section {
+    transform: scale(0.8);
+  }
+
+  #sld-1:checked ~ .controls > .sections > label:nth-of-type(1),
+  #sld-2:checked ~ .controls > .sections > label:nth-of-type(2),
+  #sld-3:checked ~ .controls > .sections > label:nth-of-type(3),
+  #sld-4:checked ~ .controls > .sections > label:nth-of-type(4) {
+    background: var(--shadow-color);
+    transform: scale(0.8);
+    cursor: default;
+  }
+
+
+}
+
+@keyframes anime1 {
+  0% {
+    margin-left: -400%;
+  }
+  100% {
+    margin-left: 0;
+  }
+}
+@keyframes anime2 {
+  0% {
+    margin-left: -400%;
+  }
+  100% {
+    margin-left: 0;
+  }
+}
+@keyframes anime3 {
+  0% {
+    margin-left: -400%;
+  }
+  100% {
+    margin-left: 0;
+  }
+}
+@keyframes anime4 {
+  0% {
+    margin-left: -400%;
+  }
+  100% {
+    margin-left: 0;
+  }
+}
+
