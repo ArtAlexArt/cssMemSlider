@@ -45,7 +45,7 @@ main {
 
 .slides {
   width: 100%;
-  height: 55em ;
+  height: 35em ;
   overflow: hidden;
   border-radius: 7%;
   box-shadow: 0em  5em  5em  2em  var(--shadow-color);
