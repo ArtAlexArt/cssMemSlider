@@ -72,6 +72,11 @@ main {
   height: 0;
 }
 
+/* 
+.slider input[type="radio"]:checked + .section {
+  background: var(--color-slider-element);
+} */
+
 .controls {
   display: flex;
   justify-content: space-between;
@@ -100,6 +105,22 @@ main {
   /* outline: 0.2em  solid var(--color-slider-element); */
   background: var(--color-slider-element);
 }
+.section:before {
+  position: fixed;
+  content: "";
+  border: 2em  solid transparent;
+  width: 5em ;
+  height: 5em ;
+  left: -2em ;
+  top: -2em ;
+  /* border: 0.01em  dotted red; */
+}
+
+.section:hover {
+  background: var(--color-white);
+  border: 0.8em  solid var(--color-white);
+  /* outline: 0.2em  solid var(--color-slider-element); */
+}
 
 #sld-1:checked ~ .controls > .sections > label:nth-of-type(1),
 #sld-2:checked ~ .controls > .sections > label:nth-of-type(2),
@@ -127,6 +148,13 @@ main {
   transition: var(--time);
 }
 
+.text::after {
+  font-family: "Helvetica","Arialregular",  sans-serif;
+  font-size: 2em ;
+  padding: 15px;
+  font-weight: bold;
+}
+
 
 #sld-1:checked ~ .controls > .text::after {
   content: "Все веселее ... ";
@@ -149,6 +177,45 @@ main {
   color: rgb(5, 65, 170);
 }
 
+@media (max-width: 700px) {
+  body {
+    font-size: 5px;
+  }
+  
+  .controls {
+    height: 15em ;
+    flex-direction: column-reverse;
+    padding-bottom: 2em ;
+  }
+
+  .slides {
+    height: 55em ;
+  
+  }
+    .text::after {
+    font-size: 2.5em ;
+  }
+
+  .sections {
+    width:  20em;
+  }
+  
+
+  .section {
+    transform: scale(0.8);
+  }
+
+  #sld-1:checked ~ .controls > .sections > label:nth-of-type(1),
+  #sld-2:checked ~ .controls > .sections > label:nth-of-type(2),
+  #sld-3:checked ~ .controls > .sections > label:nth-of-type(3),
+  #sld-4:checked ~ .controls > .sections > label:nth-of-type(4) {
+    background: var(--shadow-color);
+    transform: scale(0.8);
+    cursor: default;
+  }
+
+
+}
 
 @keyframes anime1 {
   0% {
